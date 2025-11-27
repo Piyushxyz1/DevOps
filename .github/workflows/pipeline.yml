@@ -1,0 +1,38 @@
+name: Full Stack CI/CD
+
+# Ye define karta hai workflow kab run hoga
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build Full Stack Project
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      # Step 3: Install backend dependencies
+      - name: Install Backend Dependencies
+        run: |
+          npm install
+
+   
+    
+
+     
+      # Step 6: Run backend tests
+      - name: Run Backend Tests
+        run: |
+          npm test
